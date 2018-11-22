@@ -1,0 +1,22 @@
+{
+    "loginPage": {
+        "title": "登录",
+        "placeholder": {
+            "account": "邮箱/账号",
+            "password": "密码"
+        },
+        "login": "登录{{platform}}平台",
+        "forget": "忘记密码",
+        "register": "注册账号",
+        "agreement": "点击查看<a href=\"www.xxxx.com\" class=\"gray-color\">用户协议</a>",
+        "thirdParty": "使用{{thirdParty}}登录"
+
+    },
+    "asidePage": {
+        "dashboard": {
+            "dashboard": "仪表盘",
+            "dashboard1": "仪表盘 v1",
+            "dashboard2": "仪表盘 v2"
+        }
+    }
+}
