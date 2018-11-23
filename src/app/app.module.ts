@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // 国际化
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -51,8 +51,8 @@ import { Error500Component } from './components/content/examples/error500/error5
 import { BlankpageComponent } from './components/content/examples/blankpage/blankpage.component';
 import { PacepageComponent } from './components/content/examples/pacepage/pacepage.component';
 
-//导出加载函数
-export function createTranslateHttpLoader(http:HttpClient){
+// 导出加载函数
+export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 

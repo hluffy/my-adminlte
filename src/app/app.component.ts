@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-import { AppService } from './app.service'
+import { AppService } from './app.service' ;
 
-export const appUrl:string = "http://localhost/for-my-adminlte/";
+export const appUrl = 'http://localhost/for-my-adminlte/';
 
 
 @Component({
@@ -14,41 +14,40 @@ export const appUrl:string = "http://localhost/for-my-adminlte/";
 
 
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'my-adminlte';
-  loginheight = window.innerHeight + "px"
-  showLogin = false
-  user = {userName:"",password:""}
-  
+  loginheight = window.innerHeight + 'px';
+  showLogin = false;
+  user = {userName: '', password: ''};
 
-  constructor (private appService:AppService,private translate:TranslateService) {
-    //添加语言支持
-    translate.addLangs(["en", "zh"]);
+  constructor (private appService: AppService, private translate: TranslateService) {
+    // 添加语言支持
+    translate.addLangs(['en', 'zh']);
 
-    //设置默认语言，一般在无法匹配的时候使用
+    // 设置默认语言，一般在无法匹配的时候使用
     translate.setDefaultLang('zh');
-    
-    //获取当前浏览器环境的语言比如en、 zh
-    let browserLang = translate.getBrowserLang();
+    // 获取当前浏览器环境的语言比如en、 zh
+    const browserLang = translate.getBrowserLang();
     // browserLang = 'en'
     translate.use(browserLang.match(/en|zh/) ? browserLang : 'zh');
 
   }
 
   ngOnInit () {
-    this.test()
+    console.log('--------------------------');
+    this.test();
   }
 
 
   test() {
     this.appService.test().subscribe(data => {
-      console.log(data)
-      if(data!=null && (data as any).status){
+      console.log(data);
+      if (data != null && (data as any).status) {
         this.showLogin = false;
-      }else{
+      } else {
         this.showLogin = true;
       }
-      if(data!=null&&!(data as any).status&&(data as any).code==1302){
+      if (data != null && !(data as any).status && (data as any).code === 1302) {
         this.showLogin = true;
       }
     });
@@ -56,16 +55,16 @@ export class AppComponent implements OnInit{
 
   // 登录
   Login() {
-    console.log(this.user)
+    console.log(this.user);
     this.appService.login(this.user).subscribe(result => {
-      if(result!=null && (result as any).status){
-        this.showLogin = false
+      if (result != null && (result as any).status) {
+        this.showLogin = false;
         // 刷新页面
-        window.location.reload()
-      }else{
-        alert((result as any).message)
+        window.location.reload();
+      } else {
+        alert((result as any).message);
       }
-    })
+    });
   }
 
 

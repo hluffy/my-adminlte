@@ -53,8 +53,7 @@ const routes: Routes = [
       },
       {
         path: 'simple', component: SimpleComponent
-      }    
-    ]
+      }]
   },
   {
     path: 'widgets', component: WidgetsComponent
@@ -153,7 +152,6 @@ const routes: Routes = [
       }
     ]
   }
-  
 ];
 
 @NgModule({
