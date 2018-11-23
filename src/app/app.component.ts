@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit () {
     console.log('--------------------------');
+    console.log('sssssssssssssssssssssssssss');
     this.test();
   }
 
