@@ -20,32 +20,34 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" (click)="setAddData()">添加</button>
-          <table id="example2" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>id</th>
-              <th>用户名</th>
-              <th>密码</th>
-              <th>创建时间</th>
-              <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor = 'let user of users;let i = index'>
-              <td>{{i+1}}</td>
-              <td>{{user.userName}}</td>
-              <td>{{user.password}}</td>
-              <td>{{user.careateTime}}</td>
-              <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="showEditUser(user)">编辑</button>
-                <button style="margin-left:30px" type="button" class="btn btn-danger" (click)="deleteUser(user)">删除</button>
-              </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            </tfoot>
-          </table>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" (click)="setAddData()">{{'tablePage.datatable.button.addButton' | translate}}</button>
+          <div style="height:549px">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>id</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor = 'let user of users;let i = index'>
+                <td>{{indexPage*10+i+1}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.careateTime}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" (click)="showEditUser(user)">{{'tablePage.datatable.button.editButton' | translate}}</button>
+                  <button style="margin-left:30px" type="button" class="btn btn-danger" (click)="deleteUser(user)">{{'tablePage.datatable.button.deleteButton' | translate}}</button>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+          </div>
           <div id="Pagination"></div>
         </div>
         <!-- /.box-body -->

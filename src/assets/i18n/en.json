@@ -18,5 +18,16 @@
             "dashboard1": "Dashboard v1",
             "dashboard2": "Dashboard v2"
         }
+    },
+    "tablePage": {
+        "table": "Tables",
+        "datatable": {
+            "datatable": "Data tables",
+            "button": {
+                "editButton": "edit",
+                "deleteButton": "delete",
+                "addButton": "add"
+            }
+        }
     }
 }

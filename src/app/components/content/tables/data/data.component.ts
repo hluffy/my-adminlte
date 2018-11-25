@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DataService } from './data.service'
+import { HttpClient, HttpHandler } from '@angular/common/http';
 // import * as $ from 'jquery'
 
 declare var $:any
@@ -11,19 +12,6 @@ window["jQuery"] = $
 // declare var cookie:any
 // declare var co:any;
 
-function pageselectCallback(page_index, jq){
-	console.log(11111)
-}
-function getOptionsFromForm(){
-    var opt = {callback: pageselectCallback};
-    (opt as any).prev_text = "<<";
-    (opt as any).next_text = ">>";
-    (opt as any).items_per_page=8;
-    (opt as any).num_display_entries=4;
-    (opt as any).num_edge_entries=2;
-    return opt;
-}
-
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
@@ -33,6 +21,7 @@ export class DataComponent implements OnInit {
   users:any
   editUser = {userName:""}
   addUser = {userName:"",password:""}
+  indexPage = 0
   
 
   constructor(private dataService:DataService) { }
@@ -40,23 +29,29 @@ export class DataComponent implements OnInit {
 
 
   ngOnInit() {
-    this.findAll()
+    this.findAll(0)
   }
 
   // 查询所有用户信息
-  findAll() {
-    // console.log(111)
-    // console.log(myCookie)
-    console.log(getCookie("name"))
-    this.dataService.findAll().subscribe(result => {
+  findAll(page) {
+    this.dataService.findAll(page).subscribe(result => {
       if(result!=null &&(result as any).status){
-        this.users = (result as any).data
-        let optInit = getOptionsFromForm();
-        $("#Pagination").pagination(this.users,optInit);
-        console.log(this.users)
-        console.log(optInit)
+        this.users = (result as any).data.content;
+        let optInit = this.getOptionsFromForm();
+        $("#Pagination").pagination((result as any).data.totalElements,optInit);
+        this.indexPage = (result as any).data.number;
       }
     });
+  }
+
+  // 供分页点击回调使用
+  findAllForCallBack(page){
+    this.dataService.findAll(page).subscribe(result => {
+      if(result!=null &&(result as any).status){
+        this.users = (result as any).data.content;
+        this.indexPage = (result as any).data.number;
+      }
+    })
   }
 
   // 编辑信息
@@ -69,7 +64,7 @@ export class DataComponent implements OnInit {
     this.dataService.saveEdit(this.editUser).subscribe(result => {
       if(result!=null && (result as any).status){
         alert("保存成功！")
-        this.findAll()
+        this.findAll(0)
         $("#closeEditView").click()
       }else{
         alert((result as any).message)
@@ -88,7 +83,7 @@ export class DataComponent implements OnInit {
     this.dataService.saveAdd(this.addUser).subscribe(result => {
       if(result!=null&&(result as any).status){
         alert((result as any).message)
-        this.findAll()
+        this.findAll(0)
         $("#closeAddView").click()
       }else{
         alert((result as any).message)
@@ -103,11 +98,30 @@ export class DataComponent implements OnInit {
     this.dataService.deleteUser(user).subscribe(result => {
       if(result!=null && (result as any).status){
         alert((result as any).message);
-        this.findAll()
+        this.findAll(0)
       }else{
         alert((result as any).message)
       }
     })
+  }
+
+  pageselectCallback(page_index, jq){
+    console.log(page_index)
+    this.indexPage = page_index
+    this.findAllForCallBack(page_index)
+    return false;
+  }
+  getOptionsFromForm(){
+      var opt = {
+        callback: this.pageselectCallback,
+        findAllForCallBack:this.findAllForCallBack.bind(this)
+      };
+      (opt as any).prev_text = "<<";
+      (opt as any).next_text = ">>";
+      (opt as any).items_per_page=10;
+      (opt as any).num_display_entries=4;
+      (opt as any).num_edge_entries=2;
+      return opt;
   }
 
   // 深拷贝
@@ -130,7 +144,9 @@ export class DataComponent implements OnInit {
     } else {
         return o;
     }
-}
+  }
+
+  
 
 }
 

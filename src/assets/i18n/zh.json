@@ -18,5 +18,16 @@
             "dashboard1": "仪表盘 v1",
             "dashboard2": "仪表盘 v2"
         }
+    },
+    "tablePage": {
+        "table": "表格",
+        "datatable": {
+            "datatable": "数据表格",
+            "button": {
+                "editButton": "编辑",
+                "deleteButton": "删除",
+                "addButton": "添加"
+            }
+        }
     }
 }
