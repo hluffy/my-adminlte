@@ -3,22 +3,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { appUrl } from 'src/app/app.component';
 import { catchError, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { returnData } from 'src/app/result-result'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
   constructor(private http: HttpClient ) { }
 
   // 查询所有用户信息
-<<<<<<< HEAD
   findAll(page){
     return this.http.get(appUrl + "user/findall?page="+page)
-=======
-  findAll() {
-    return this.http.get(appUrl + 'user/findall')
->>>>>>> refs/remotes/origin/master
     .pipe(
       tap(_ => console.log(_)),
       catchError(null)

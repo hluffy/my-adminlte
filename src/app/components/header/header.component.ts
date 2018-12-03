@@ -12,6 +12,7 @@ declare var GoEasy:any;
 })
 export class HeaderComponent implements OnInit {
   showSwitch:boolean = true
+  headerUserName:string = ""
 
   constructor(
     private headerService:HeaderService,
@@ -51,6 +52,8 @@ export class HeaderComponent implements OnInit {
     if(browserLang=='en'){
       this.showSwitch = false
     }
+
+    this.headerUserName = getCookie("username")
   }
 
   Logout() {

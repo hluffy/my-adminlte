@@ -50,6 +50,8 @@ import { Error404Component } from './components/content/examples/error404/error4
 import { Error500Component } from './components/content/examples/error500/error500.component';
 import { BlankpageComponent } from './components/content/examples/blankpage/blankpage.component';
 import { PacepageComponent } from './components/content/examples/pacepage/pacepage.component';
+import { MapComponent } from './components/content/map/map.component';
+import { EchartsComponent } from './components/content/echarts/echarts.component';
 
 // 导出加载函数
 export function createTranslateHttpLoader(http: HttpClient) {
@@ -93,7 +95,9 @@ export function createTranslateHttpLoader(http: HttpClient) {
     Error404Component,
     Error500Component,
     BlankpageComponent,
-    PacepageComponent
+    PacepageComponent,
+    MapComponent,
+    EchartsComponent
   ],
   imports: [
     BrowserModule,

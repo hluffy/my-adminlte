@@ -29,5 +29,11 @@
                 "addButton": "add"
             }
         }
+    },
+    "mapPage": {
+        "map": "Map"
+    },
+    "echartsPage": {
+        "echarts": "Echarts"
     }
 }

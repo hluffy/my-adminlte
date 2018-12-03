@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent implements OnInit {
+  asideUserName:string = ""
 
   constructor() { }
 
   ngOnInit() {
+    this.asideUserName = getCookie("username");
   }
 
 }

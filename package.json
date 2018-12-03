@@ -25,6 +25,7 @@
     "@types/jquery": "^3.3.22",
     "admin-lte": "^2.4.8",
     "core-js": "^2.5.4",
+    "echarts": "^4.2.0-rc.2",
     "ionic-angular": "^3.9.2",
     "jquery": "^3.3.1",
     "rxjs": "~6.3.3",

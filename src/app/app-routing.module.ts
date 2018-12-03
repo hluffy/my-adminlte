@@ -28,6 +28,8 @@ import { Error404Component } from './components/content/examples/error404/error4
 import { Error500Component } from './components/content/examples/error500/error500.component';
 import { BlankpageComponent } from './components/content/examples/blankpage/blankpage.component';
 import { PacepageComponent } from './components/content/examples/pacepage/pacepage.component';
+import { MapComponent } from './components/content/map/map.component';
+import { EchartsComponent } from './components/content/echarts/echarts.component';
 
 
 const routes: Routes = [
@@ -151,6 +153,12 @@ const routes: Routes = [
         path: 'pace', component: PacepageComponent
       }
     ]
+  },
+  {
+    path: 'map', component: MapComponent
+  },
+  {
+    path: 'echarts', component: EchartsComponent
   }
 ];
 

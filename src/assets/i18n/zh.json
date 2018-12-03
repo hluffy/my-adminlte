@@ -29,5 +29,11 @@
                 "addButton": "添加"
             }
         }
+    },
+    "mapPage": {
+        "map": "地图"
+    },
+    "echartsPage": {
+        "echarts": "图表"
     }
 }

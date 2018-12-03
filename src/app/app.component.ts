@@ -17,8 +17,8 @@ export const appUrl = 'http://localhost/for-my-adminlte/';
 export class AppComponent implements OnInit {
   title = 'my-adminlte';
   loginheight = window.innerHeight + 'px';
-  showLogin = false;
-  user = {userName: '', password: ''};
+  showLogin = false;  //是否显示登录页面
+  user = {userName: '', password: ''}; //用户对象
 
   constructor (private appService: AppService, private translate: TranslateService) {
     // 添加语言支持
@@ -34,8 +34,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit () {
-    console.log('--------------------------');
-    console.log('sssssssssssssssssssssssssss');
+    // console.log('--------------------------');
+    // console.log('sssssssssssssssssssssssssss');
     this.test();
   }
 
@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
         this.showLogin = false;
         // 刷新页面
         window.location.reload();
+        addCookie("username",this.user.userName);
       } else {
         alert((result as any).message);
       }
